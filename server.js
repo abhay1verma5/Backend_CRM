@@ -15,11 +15,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 dotenv.config();
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((error) => console.error('Error connecting to MongoDB:', error));
 
 const corsOptions = {
   origin: '*', 

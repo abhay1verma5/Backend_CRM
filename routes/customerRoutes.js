@@ -1,6 +1,6 @@
 import express from 'express';
 import Customer from '../models/Customer.js';
-import { publishToQueue } from '../services/messageQueue.js';
+
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     await newCustomer.save();
 
     
-    await publishToQueue('customer_created', newCustomer);
+    
 
     res.status(201).json(newCustomer);
   } catch (error) {
